@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Text with a Twist! </title>
+    <meta charset="UTF-8">
+    <link href="./twist.css" rel="stylesheet">
+  </head>
+  <body>
+    <div id="main">
+      <div id="remaining" >
+        [<span class="solved"></span> / <span class="total"></span>] two letter words! <br/>
+        [<span class="solved"></span> / <span class="total"></span>] three letter words! <br/>
+        [<span class="solved"></span> / <span class="total"></span>] four letter words! <br/>
+        [<span class="solved"></span> / <span class="total"></span>] five letter words! <br/>
+        [<span class="solved"></span> / <span class="total"></span>] six letter words!
+      </div>
+      <div id="top-hud" class="content">
+        <ul id="top-hud-info">
+          <li class="counter"> Time: <span id="time"></span> </li>
+          <li class="counter"> Score: <span id="score"></span> </li>
+        </ul>
+      </div>
+      <div id="enter-section" class="content">
+        <ol id="enter-section-list">
+        <li class="enter" id="e0">_</li>
+        <li class="enter" id="e1">_</li>
+        <li class="enter" id="e2">_</li>
+        <li class="enter" id="e3">_</li>
+        <li class="enter" id="e4">_</li>
+        <li class="enter" id="e5">_</li>
+        </ol>
+      </div>
+      <div id="letter-section" class="content">
+        <button class="letter" id="l0"></button>
+        <button class="letter" id="l1"></button>
+        <button class="letter" id="l2"></button>
+        <button class="letter" id="l3"></button>
+        <button class="letter" id="l4"></button>
+        <button class="letter" id="l5"></button>
+
+      </div>
+      <div id="bot-hud" class="content">
+        <button id="twist"> Twist </button>
+        <button id="submit"> Submit </button>
+        <button id="round"> Next Round </button>
+      </div>
+    </div>
+    <script type ="text/javascript" src="twist.js" > </script>
+  </body>
+</html>

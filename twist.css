@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css?family=Cousine');
+
+body {
+    font-family: 'Cousine', monospace;
+}
+
+#main {
+    border: 1px solid black;
+}
+#remaining {
+    border: 1px solid blue;
+    width: 300px;
+    height: 100%;
+    float: left;
+    left: 0;
+}
+.content {
+    margin-left: 300px;
+}
+#top-hud {
+    border: 1px solid red;
+    padding: 20px;
+}
+#top-hud-info {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.counter {
+    margin: 20px;
+    display: inline;
+    border: 1px solid purple;
+}
+
+.enter {
+    display: inline;
+    margin: 10px;
+}
+
+.letter {
+    display: inline;
+    margin: 10px;
+    border: none;
+}
