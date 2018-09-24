@@ -66,6 +66,7 @@ function update() {
 function typing(e) {
   if (e.keyCode === 13) {
     console.log('this was an enter');
+    testPost();
   }
   else if (e.keyCode === 8) {
     console.log('this was a backspace');
@@ -89,8 +90,8 @@ function shuffle(arr) {
 
 function listen() {
   document.addEventListener("keydown", typing, false);
-  //document.querySelector('#submit').addEventListener('click', '');
-  //document.querySelector('#round').addEventListener('click', '');
+  document.querySelector('#submit').addEventListener('click', testPost);
+  document.querySelector('#round').addEventListener('click', newRound);
   document.querySelector('#twist').addEventListener('click', () => {
     shuffle(letterRack);
     update();
@@ -102,14 +103,36 @@ function getNewRack() {
   xhr.onload = function() {
     if (this.status === 200) {
       let newRack = JSON.parse(this.response);
-      letterRack = [];
-      for (let i = 0; i < rack.length; i++) {
-        letterRack.push(newRack[i]);
-      }
+      letterRack = Array.from(newRack.word);
+      totalWords = newRack.count;
+      completedWords = totalWords;
+
+      submitRack = ['_','_','_','_','_','_'];
+      currentLetter = 0;
+      update(); //placed here because this all happens async - read up about Promises i guess...
     }
   };
   xhr.open("GET", 'php/genRack.php');
   xhr.send();
+}
+
+function testPost(){
+  var xhr = new XMLHttpRequest();
+  var test = submitRack.join('');
+  xhr.onload = function() {
+    if (this.status === 200) {
+      //console.log(JSON.parse(this.response));
+      completedWords = JSON.parse(this.response);
+      update();
+    }
+  };
+  xhr.open("POST", 'php/genRack.php');
+  //xhr.setRequestHeader("Content-Type", "application/json");
+  xhr.send(test);
+}
+
+function newRound(){
+  getNewRack();
 }
 
 init();
