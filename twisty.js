@@ -66,7 +66,7 @@ function update() {
 function typing(e) {
   if (e.keyCode === 13) {
     console.log('this was an enter');
-    testPost();
+    submit();
   }
   else if (e.keyCode === 8) {
     console.log('this was a backspace');
@@ -90,7 +90,7 @@ function shuffle(arr) {
 
 function listen() {
   document.addEventListener("keydown", typing, false);
-  document.querySelector('#submit').addEventListener('click', testPost);
+  document.querySelector('#submit').addEventListener('click', submit);
   document.querySelector('#round').addEventListener('click', newRound);
   document.querySelector('#twist').addEventListener('click', () => {
     shuffle(letterRack);
@@ -115,6 +115,14 @@ function getNewRack() {
   xhr.open("GET", 'php/genRack.php');
   xhr.send();
 }
+
+function submit() {
+  testPost();
+  while (currentLetter > 0) {
+    popLetter();
+  }
+}
+
 
 function testPost(){
   var xhr = new XMLHttpRequest();
